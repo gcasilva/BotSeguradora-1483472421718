@@ -3,6 +3,7 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var watson = require('watson-developer-cloud');
 var app = express();
+var contador = 0;
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -15,13 +16,13 @@ var w_conversation = watson.conversation({
     version: 'v1',
     version_date: '2016-07-11'
 });
-var workspace = process.env.WORKSPACE_ID || 'a854caac-c79c-4ebc-8769-8bf5fd46781a';
+var workspace = process.env.WORKSPACE_ID || '7f972ab9-6fcb-4743-a280-82fde4e287ee';
 
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'tokenDeVerificacaoFacebook') {
         res.send(req.query['hub.challenge']);
     }
-    res.send('Erro de validação no token.');
+    res.send('Erro de validação no token!');
 });
 
 app.post('/webhook/', function (req, res) {
