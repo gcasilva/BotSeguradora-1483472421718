@@ -3,7 +3,6 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var watson = require('watson-developer-cloud');
 var app = express();
-var contador = 0;
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -11,18 +10,18 @@ app.use(bodyParser.json())
 var conversation_id = "";
 var w_conversation = watson.conversation({
     url: 'https://gateway.watsonplatform.net/conversation/api',
-    username: process.env.CONVERSATION_USERNAME || '8b792bc1-e3b6-4c63-b6fe-aa53782c3f08',
-    password: process.env.CONVERSATION_PASSWORD || 'OtMlWJIMAPeO',
+    username: process.env.CONVERSATION_USERNAME || '487fbc2c-69a7-43a8-83d2-c773b8bf7538',
+    password: process.env.CONVERSATION_PASSWORD || 'iBw3ghr3rbhp',
     version: 'v1',
     version_date: '2016-07-11'
 });
-var workspace = process.env.WORKSPACE_ID || '7f972ab9-6fcb-4743-a280-82fde4e287ee';
+var workspace = process.env.WORKSPACE_ID || 'd3b15a7b-4ff5-46df-a29d-e15b047bf97d';
 
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'tokenDeVerificacaoFacebook') {
         res.send(req.query['hub.challenge']);
     }
-    res.send('Erro de validação no token!');
+    res.send('Erro de validação no token.');
 });
 
 app.post('/webhook/', function (req, res) {
@@ -103,7 +102,7 @@ function sendMessage(sender, text_) {
     });
 };
 
-var token = "EAAUJQAaAyTABAAT8jtsnSg0RrebyNCX2cONideTrCtMD4vIhGjYMFSwof0juLEEs9Jy7a4bnVZAw3wnQmb4mMxeJ2aFK1AHfyILZAB9gESRNCCxOrSpCCOAYV6p5xDl0v1Datt831Pw2iCwlnn1D0klDcWIseh7cUSoyZAdoAZDZD";
+var token = "EAAbIuDXQjPMBAMpCJX368yZAdIMxxDe3tBajF8O4ROhH2pZANCAZCQZCDRPlrcu0BZAxR6i5XOyYX0346iZC8PA2pxPWLSpmB0c4WK5okbl8yYrZA3Ikykm07ARjiSrUQQEQqY4rWPONxt4K3PhEVVRy7zCZBV2xoqZB6sUgUM2acNQZDZD";
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
 app.listen(port, host);

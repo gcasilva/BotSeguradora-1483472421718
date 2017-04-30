@@ -9,9 +9,9 @@
 		"express": "4.13.x",
 		"cfenv": "1.0.x",
 		"body-parser": "*",
-    "request": "*",
+		"request": "*",
     "htmlparser": "*",
-    "watson-developer-cloud": "*"
+		"watson-developer-cloud": "*"
 	},
 	"repository": {},
 	"engines": {
